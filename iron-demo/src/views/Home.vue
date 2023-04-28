@@ -3,7 +3,7 @@
         <h3>home</h3>
     </div>
     <h1>{{message}}</h1>
-    <h1>{{print}}</h1>
+
 </template>
 <script>
 export default {
@@ -14,9 +14,7 @@ export default {
         }
     },
     methods:{
-        print(){
-            console.log("home page")
-        }
+
     }
     // ...
   }

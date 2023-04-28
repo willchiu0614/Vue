@@ -1,21 +1,37 @@
 <template>
-  <div></div>
-  <router-link to="/home">Home</router-link> |
-  <router-link to="/about">About</router-link>
-  <DisplayNumber></DisplayNumber>
-  <AddNumbers></AddNumbers>
+  <div>
+    <div>Day1 component</div>
+    <DisplayNumber></DisplayNumber>
+    <AddNumbers></AddNumbers>
+  </div>
+  <br>
+  <hr>
+  <div>
+    <div>Day2 router</div>
+    <br>
+    <div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+      <span v-for="i in 2" :key="i">
+        |
+        <router-link :to="`/user/${i}`">User/{{ i }}</router-link>
+      </span>
+      <router-view></router-view>
+    </div>
 
-  
+  </div>
+  <!-- <About></About> -->
 </template>
 
 <script>
 
-import AddNumbers from './components/AddNumbers.vue';
-import DisplayNumber from './components/DisplayNumber.vue';
+import AddNumbers from './views/AddNumbers.vue';
+import DisplayNumber from './views/DisplayNumber.vue';
+// import About from './views/About.vue';
 export default {
   name: 'App',
   components: {
-
+    // About,
     AddNumbers,
     DisplayNumber
   }
@@ -27,7 +43,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
