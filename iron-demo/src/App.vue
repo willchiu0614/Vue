@@ -1,18 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <div></div>
+  <router-link to="/home">Home</router-link> |
+  <router-link to="/about">About</router-link>
   <DisplayNumber></DisplayNumber>
   <AddNumbers></AddNumbers>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 import AddNumbers from './components/AddNumbers.vue';
 import DisplayNumber from './components/DisplayNumber.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+
     AddNumbers,
     DisplayNumber
   }
