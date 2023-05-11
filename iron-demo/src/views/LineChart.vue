@@ -23,7 +23,8 @@ export default {
                 {
                 label: 'demo',
                 data: [50, 40, 71, 51, 500, 49],
-                backgroundColor: 'rgba(0,255,2,1)',
+                // backgroundColor: 'rgba(0,255,2,1)',
+                ...this.chartColorOptions
                 },
             ],
         },
@@ -35,17 +36,15 @@ export default {
     
   },
   methods:{
-    updateColor(){
-        this.chartData.datasets.backgroundColor='rgba(0,255,2,1)'
-    }
+
   },
   computed:{
     updateChartData() { 
-        console.log("change color",this.chartData.datasets.backgroundColor)
         return this.chartData
     },
     updateOptions() {
-         return this.options }
+         return this.options },
+    
   },
   // 加入基本的資料驗證
   props: {
@@ -60,9 +59,9 @@ export default {
       type: Object,
       default: () => {}
     },
-    backgroundColor_p: {
+    chartColorOptions: {
       type: Object,
-    },
+    }
   },
   async mounted() {
     // 從傳入的資料中取出數字與日期，並將其反轉(因為我們拿到的是最新到最舊的資料)
@@ -72,7 +71,7 @@ export default {
     this.chartData.labels=dates
     this.chartData.datasets[0].data=totals
     this.options=this.chartOptions_p
-    this.chartData.datasets[0].backgroundColor=this.backgroundColor_p
+
 
     this.loaded=true;
   },
