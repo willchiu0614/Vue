@@ -6,19 +6,19 @@
           <v-container>
             
             <h1>COVID-19 Tracking Dashboard</h1>
-            <v-tabs v-model="tab" background-color="primary" dark>
-              <v-tab v-for="item in items" :key="item.tab">
-                {{ item.tab }}
+            <v-tabs v-model="tab" >
+              <v-tab v-for="item in items" :key="item.tabN">
+                {{ item.tabN }}
               </v-tab>
             </v-tabs>
 
-            <v-tabs-items v-model="tab">
-              <v-tab-item v-for="item in items" :key="item.tab">
+            <v-window v-model="tab">
+              <v-window-item v-for="item in items" :key="item.tabN">
                 <v-card flat>
                   <v-card-text>{{ item.content }}</v-card-text>
                 </v-card>
-              </v-tab-item>
-            </v-tabs-items>
+              </v-window-item>
+            </v-window>
 
             
             <!-- <LineChart/> -->
@@ -58,16 +58,16 @@ export default {
       },
       tab: null,
       items: [
-        { tab: 'One', content: 'Tab 1 Content' },
-        { tab: 'Two', content: 'Tab 2 Content' },
-        { tab: 'Three', content: 'Tab 3 Content' },
-        { tab: 'Four', content: 'Tab 4 Content' },
-        { tab: 'Five', content: 'Tab 5 Content' },
-        { tab: 'Six', content: 'Tab 6 Content' },
-        { tab: 'Seven', content: 'Tab 7 Content' },
-        { tab: 'Eight', content: 'Tab 8 Content' },
-        { tab: 'Nine', content: 'Tab 9 Content' },
-        { tab: 'Ten', content: 'Tab 10 Content' },
+        { tabN: 'One', content: 'Tab 1 Content' },
+        { tabN: 'Two', content: 'Tab 2 Content' },
+        { tabN: 'Three', content: 'Tab 3 Content' },
+        { tabN: 'Four', content: 'Tab 4 Content' },
+        { tabN: 'Five', content: 'Tab 5 Content' },
+        { tabN: 'Six', content: 'Tab 6 Content' },
+        { tabN: 'Seven', content: 'Tab 7 Content' },
+        { tabN: 'Eight', content: 'Tab 8 Content' },
+        { tabN: 'Nine', content: 'Tab 9 Content' },
+        { tabN: 'Ten', content: 'Tab 10 Content' },
       ]
     }
   },

@@ -91,7 +91,7 @@
   }
   
   .container {
-    height: 50vh;
+    height: 100vh;
     padding: 25px;
     background-image: linear-gradient(
       to bottom,
