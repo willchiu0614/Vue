@@ -48,7 +48,7 @@ export default {
   },
   // 加入基本的資料驗證
   props: {
-    label:{
+    label_p:{
         type:String,
     },
     chartData_p: {
@@ -69,6 +69,7 @@ export default {
     const totals = this.chartData_p?.map((d) => d.total).reverse()
  
     this.chartData.labels=dates
+    this.chartData.datasets[0].label=this.label_p
     this.chartData.datasets[0].data=totals
     this.options=this.chartOptions_p
 

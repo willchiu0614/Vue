@@ -4,30 +4,31 @@
       <v-container>
         <v-card>
           <v-container>
-            
+
             <h1>COVID-19 Tracking Dashboard</h1>
-            <v-tabs v-model="tab" >
-              <v-tab v-for="item in items" :key="item.tabN">
-                {{ item.tabN }}
+            <v-tabs v-model="tab">
+              <v-tab v-for="item in labels" :key="item" :href="`#${item}`">
+                {{ item }}
               </v-tab>
             </v-tabs>
 
+
             <v-window v-model="tab">
-              <v-window-item v-for="item in items" :key="item.tabN">
+              <v-window-item v-for="chartData in renderData" :key="chartData.id" >
                 <v-card flat>
-                  <v-card-text>{{ item.content }}</v-card-text>
+                  <v-row v-if="arrPositive.length">
+                    <v-col cols="12">
+                      <h2>{{ chartData.label }}</h2>
+                      <LineChart :label_p="chartData.label" :chartData_p="chartData.data" :chartOptions_p="chartOptions"
+                        :chartColorOptions="chartData.chartColorOptions" />
+                    </v-col>
+                  </v-row>
                 </v-card>
               </v-window-item>
             </v-window>
 
-            
-            <!-- <LineChart/> -->
-            <v-row v-if="arrPositive.length">
-              <v-col cols="12" v-for="chartData in renderData" :key=chartData.id>
-                <LineChart :label="chartData.label" :chartData_p="chartData.data" :chartOptions_p="chartOptions"
-                  :chartColorOptions="chartData.chartColorOptions" />
-              </v-col>
-            </v-row>
+
+
           </v-container>
         </v-card>
       </v-container>
@@ -68,6 +69,15 @@ export default {
         { tabN: 'Eight', content: 'Tab 8 Content' },
         { tabN: 'Nine', content: 'Tab 9 Content' },
         { tabN: 'Ten', content: 'Tab 10 Content' },
+      ],
+      // 建立所有的labels
+      labels: [
+        'Positive',
+        'Hoptialized',
+        'InIcu',
+        'OnVentilators',
+        'Recovered',
+        'Deaths',
       ]
     }
   },
@@ -81,17 +91,10 @@ export default {
         arrOnVentilators,
         arrRecovered,
         arrDeaths,
+        labels
       } = this
 
-      // 建立所有的labels
-      const labels = [
-        'Positive',
-        'Hoptialized',
-        'InIcu',
-        'OnVentilators',
-        'Recovered',
-        'Deaths',
-      ]
+
 
       // 將所有要輸出的陣列整理為一個，做為最終迭代的對象
       const displayedDataArr = [
